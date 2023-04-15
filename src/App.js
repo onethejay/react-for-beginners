@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [counter, setValue] = useState(0);
@@ -7,11 +7,18 @@ function App() {
   const onChange = (event) => {
     setKeyword(event.target.value);
   };
-
-  console.log('i run all the time');
   useEffect(() => {
-    console.log('CALL THE API...');
+    console.log('I run only once');
   }, []);
+  useEffect(() => {
+    console.log('I run when keyword changes');
+  }, [keyword]);
+  useEffect(() => {
+    console.log('I run when counter changes');
+  }, [counter]);
+  useEffect(() => {
+    console.log('i run when keyword & counter changes');
+  }, [keyword, counter]);
   return (
     <div>
       <input
